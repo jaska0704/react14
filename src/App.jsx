@@ -1,10 +1,10 @@
 import React from "react";
-import { ContexuserPro } from "./context/context-user/contex-user-pro";
+import { UserContex } from "./context/context-user/contex-user-pro";
 import { ADD, DELETE, EDIT } from "./context/context-user/user-type";
 
 function App() {
   const [input, setInput] = React.useState("");
-  const { userData, userDatapatch } = React.useContext(ContexuserPro);
+  const { userData, userDatapatch } = React.useContext(UserContex);
 
   const submit = (e) => {
     e.preventDefault();
@@ -49,21 +49,36 @@ function App() {
           <h1>{item.name}</h1>
           <button
             className=" max-w-[10%] w-full bg-green-400 text-white py-2 rounded-lg"
-            onClick={() =>{ editInput(item.id, item.name);
+            onClick={() => {
+              editInput(item.id, item.name);
             }}
           >
             Edit
           </button>
           <button
             className=" max-w-[10%] w-full bg-red-400 text-white py-2 rounded-lg"
-            onClick={() =>{
-              if (confirm("Ishonchingiz komilmi?"))  deletInput(item.id);
+            onClick={() => {
+              if (confirm("Ishonchingiz komilmi?")) deletInput(item.id);
             }}
           >
             Delete
           </button>
         </div>
       ))}
+      <div role="tablist" className="tabs tabs-lifted">
+        <a role="tab" className="tab">
+          Tab 1
+        </a>
+        <a
+          role="tab"
+          className="tab tab-active [--tab-bg:yellow] [--tab-border-color:orange] text-primary"
+        >
+          Tab 2
+        </a>
+        <a role="tab" className="tab">
+          Tab 3
+        </a>
+      </div>
     </div>
   );
 }
